@@ -88,14 +88,16 @@ const CameraScreen = props => {
   return (
     <View style={{flex: 1}}>
       {device && hasPermission ? (
-        <Camera
-          style={StyleSheet.absoluteFill}
-          isActive={isActive}
-          frameProcessor={frameProcessor}
-          device={device}
-          format={format}
-          pixelFormat="yuv"
-        />
+        <>
+          <Camera
+            style={StyleSheet.absoluteFill}
+            isActive={isActive}
+            frameProcessor={frameProcessor}
+            device={device}
+            format={format}
+            pixelFormat="yuv"
+          />
+        </>
       ) : null}
       <View style={[StyleSheet.absoluteFill]}>
         <View style={styles.backdrop} />
@@ -108,6 +110,7 @@ const CameraScreen = props => {
             <View style={styles.bottomLeft} />
             <View style={styles.bottomRight} />
           </View>
+
           <View style={styles.backdrop} />
         </View>
         <View style={styles.backdrop} />
@@ -131,6 +134,15 @@ const CameraScreen = props => {
               ]}></View>
           </View>
         </Pressable>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          top: '70%',
+          alignItems: 'center',
+          zIndex: 10,
+        }}>
+        <Text style={{color: 'white', fontSize: 36}}>Front Image</Text>
       </View>
     </View>
   );
@@ -199,6 +211,7 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
+    zIndex: 20,
   },
   outerCircle: {
     width: 60,
